@@ -1,0 +1,395 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html,
+main {
+    height: 100%;
+}
+
+header {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+    /*    position: relative;*/
+    z-index: 2;
+    height: 60px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+header .toggle_nav {
+    position: absolute;
+    right: 10px;
+    display: none;
+}
+
+#logo {
+    position: fixed;
+    left: 20px;
+    top: 8px;
+}
+
+#logo img {
+    width: 200px;
+    height: 42px;
+}
+
+nav {
+    margin-left: 10px;
+}
+
+#nav_items {
+    display: flex;
+    list-style: none;
+}
+
+#nav_items li {
+    line-height: 50px;
+    height: 45px;
+    padding: 5px 20px;
+    color: #8c8080;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+#nav_items li a {
+    text-decoration: none;
+    color: #8c8080;
+}
+
+#nav_items a {
+    padding: 0.5em 0;
+    color: rgba(255, 255, 255, 0.5);
+    position: relative;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+#nav_items a:before,
+#nav_items a:after {
+    position: absolute;
+    transition: all 0.35s ease;
+    -webkit-transition: all 0.35s ease;
+
+}
+
+#nav_items a:before {
+    bottom: 0;
+    display: block;
+    height: 3px;
+    width: 0%;
+    content: "";
+    background-color: #767879;
+}
+
+#nav_items a:after {
+    left: 0;
+    top: 0;
+    padding: 0.5em 0;
+    position: absolute;
+    content: attr(data-hover);
+    color: #ffffff;
+    white-space: nowrap;
+    max-width: 0%;
+    overflow: hidden;
+}
+
+#nav_items a:hover:before,
+#nav_items .current a:before {
+    opacity: 1;
+    width: 100%;
+}
+
+#nav_items a:hover:after,
+#nav_items .current a:after {
+    max-width: 100%;
+}
+
+#nav_items li:hover {
+    cursor: pointer;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+#mySidenavOverlay {
+    opacity: .5;
+    width: 100%;
+    display: none;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#image_slider {
+    height: 85%;
+    background-image: url('../images/chair-contemporary-cushions-1439965.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*slider start*/
+#slider-wrapper {
+    width: 100%;
+    background: #333;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.slider-controls .next,
+.prev {
+    display: block;
+    position: absolute;
+    border: none;
+    background-color: rgba(51, 51, 51, 0.5);
+    color: #fff;
+    top: 50%;
+    padding: 20px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    z-index: 1;
+}
+
+.slider-controls .next {
+    right: 20px;
+}
+
+.slider-controls .prev {
+    left: 20px;
+}
+
+.slider-controls .next:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.slider-controls .prev:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.slider-items {
+    width: 100%;
+    margin: 0px auto;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-items .slider-item {
+    width: 100%;
+    position: absolute;
+    opacity: 1;
+}
+
+.slider-items .slider-item.active {
+    opacity: 1;
+}
+
+.slider-items .slider-item.active .content h1 {
+    opacity: 1;
+    bottom: 40%;
+    left: 20%;
+    z-index: 9999;
+    font-weight: normal;
+}
+
+.slider-items .slider-item.active .content p {
+    opacity: 1;
+    left: 20%;
+    z-index: 9999;
+}
+
+.slider-items .slider-item.active .content img {
+    opacity: 1;
+}
+
+.slider-items .slider-item .content {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-items .slider-item .content h1 {
+    position: absolute;
+    bottom: 40%;
+    left: 10%;
+    background-color: rgba(#336699, 0.8);
+    padding: 15px 20px;
+    color: #fff;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.slider-items .slider-item .content p {
+    position: absolute;
+    bottom: 32%;
+    left: 0%;
+    background-color: rgba(#333, 0.8);
+    padding: 10px;
+    color: #fff;
+    opacity: 0;
+    transition: all 0.6s;
+    transition-delay: 0.1s;
+}
+
+.slider-items .slider-item .content img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.slider-bullets {
+    width: 100px;
+    bottom: 20px;
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+    width: 100%;
+}
+
+.slider-bullets .bullet {
+    width: 20px;
+    height: 20px;
+    background: rgba(228, 228, 228, 0.4);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.slider-bullets .bullet.active {
+    border: 2px solid #333;
+}
+
+/*slider end*/
+
+#about_illusions {
+    margin: 0 10%;
+    text-align: center;
+    color: #616161;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 40px;
+}
+
+#about_illusions h1 {
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+#about_illusions h2,
+p {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 28px !important;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.7px;
+}
+footer {
+    background-color: #e6e6e6;
+    width: 100%;
+    /*    height: 50px;*/
+    text-align: center;
+    padding: 15px 0px;
+    font: 300 13px "Raleway", "Source Sans Pro", Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+}
+
+/*start services*/
+.services_wrapper {
+    width: 80%;
+    margin: 100px auto 0;
+    max-width: 1152px !important;
+}
+
+.services_top h1 {
+    text-transform: uppercase;
+    font-size: 28px;
+    text-align: center;
+    color: #616161;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+}
+
+.services_top p {
+    font-family: 'Poppins', sans-serif;
+    color: #616161;
+}
+.column h1{
+     text-transform: uppercase;
+    font-size: 28px;
+    text-align: center;
+    color: #616161;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+}
+.column p{
+     font-family: 'Poppins', sans-serif;
+    color: #616161;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    #nav_items li {
+        font-size: 12px;
+        padding: 5px 12px 0px;
+    }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+label{
+    margin-left: 380px;
+     font-family: 'Poppins', sans-serif;
+     color: #616161;
+     font-size: 20px;
+}
+input{
+     font-family: 'Poppins', sans-serif;
+    color: #616161;
+}
+
